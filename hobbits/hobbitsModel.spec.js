@@ -31,5 +31,13 @@ describe("hobbitsModel.js", () => {
       hobbits = await db("hobbits");
       expect(hobbits).toHaveLength(2);
     });
+
+    it("resolves to the newly insterted hobbit", async () => {
+      //proves that in the insert function we get the newly inserted object
+      expect(await Hobbits.insert({ name: "Bro" })).toEqual({
+        id: 1,
+        name: "Bro"
+      });
+    });
   });
 });
