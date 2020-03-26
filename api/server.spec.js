@@ -8,12 +8,26 @@ it("is running with the correct db", () => {
 describe("server.js", () => {
   describe("GET on /", () => {
     it("runs without errors", () => {
-      return request(server)
-        .get("/")
-        .expect(200)
-        .expect("Content-Type", /json/);
+      return (
+        request(server)
+          .get("/")
+          .expect(200)
+          .expect("Content-Type", /json/)
+          .expect("Content-Length", "12")
+          // referece server.js line 10
+          .expect({ api: "up" })
+      );
     });
   });
 
-  describe("GET on /hobbits", () => {});
+  describe("GET on /hobbits", () => {
+    it("runs withous errors", () => {
+      return request(server)
+        .get("/hobbits")
+        .then(res => {
+          expect(res.statusCode).toBe(200);
+          //   expect("Content-Type", /json/);
+        });
+    });
+  });
 });

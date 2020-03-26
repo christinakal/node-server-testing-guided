@@ -1,3 +1,5 @@
-it('is running with the correct db', () => {
-    expect(process.env.DB_ENV).toBe('testing');
-})
+it("is running with the correct db", () => {
+  expect(process.env.DB_ENV).toBe("testing");
+});
+
+describe("hobbitsModel.js", () => {});
